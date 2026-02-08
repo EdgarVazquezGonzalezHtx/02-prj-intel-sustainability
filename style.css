@@ -1,8 +1,8 @@
 /* Add your CSS here */
 :root {
---card: #FFFFFF;
---border: #E3E8EF;
---radius: 16px;
+--card: #E8F0FF;
+--border: #0071C5;
+--radius: 28px;
 }
 
 
@@ -12,6 +12,7 @@ margin: 0;
 font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 color: var(--ink);
 background: var(--bg);
+background: linear-gradient(135deg, #C0C0C0 0%, #808080 50%, #E8E8E8 100%);
 }
 
 
@@ -22,21 +23,39 @@ margin: 0 auto;
 
 
 .hero {
-padding: 64px 0 48px;
+padding: 16px 20px 12px;
 background:
 radial-gradient(900px 400px at 20% 0%, rgba(0, 174, 239, 0.20), transparent 60%),
 radial-gradient(700px 350px at 90% 20%, rgba(0, 104, 181, 0.18), transparent 60%),
 linear-gradient(180deg, #ffffff, #f2f7ff);
 border-bottom: 1px solid var(--border);
+height: max-content;
 }
 
 
-.hero__logo { height: 44px; width: auto; }
+.container.hero_inner{
+  background-color: #0068B5;
+  height: max-content;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.hero__logo { 
+background-color: #00010e;
+transform: scale(1.5);
+}
 .hero__title {
 margin: 18px 0 10px;
 font-size: clamp(32px, 3.2vw, 56px);
 letter-spacing: -0.02em;
 line-height: 1.05;
+background: linear-gradient(135deg, #0071C5 0%, #00CCFF 50%, #0071C5 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+text-shadow: 0 0 30px rgba(0, 113, 197, 0.3);
+font-weight: 800;
+filter: drop-shadow(0 0 8px rgba(0, 204, 255, 0.4));
 }
 .hero__lead {
 margin: 0;
@@ -55,12 +74,14 @@ margin-top: 18px;
 }
 .chip {
 padding: 8px 12px;
-border-radius: 999px;
-background: rgba(0, 104, 181, 0.08);
-border: 1px solid rgba(0, 104, 181, 0.18);
-color: var(--intel-blue);
-font-weight: 600;
+border-radius: 20px;
+background: linear-gradient(135deg, #0071C5 0%, #004BA3 100%);
+border: 2px solid #003D82;
+color: #FFFFFF;
+font-weight: 900;
 font-size: 13px;
+text-transform: uppercase;
+box-shadow: 0 4px 12px rgba(0, 113, 197, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 
@@ -79,8 +100,44 @@ gap: 18px;
 
 .card {
 grid-column: 2 / -2;
-background: var(--card);
-border: 1px solid var(--border);
-border-radius: var(--radius);
+background: linear-gradient(135deg, #FFFFFF 0%, #E8F0FF 50%, #D0E8FF 100%);
+border: 2px solid #0071C5;
+border-radius: 28px;
 padding: 18px 18px 16px;
+box-shadow: 0 8px 24px rgba(0, 113, 197, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+.intel_founded_img{
+  height: 200px; width: auto;
+  display: block;
+  margin: 0 auto;
+}
+.intel_4004_img{
+  height: 200px; width: auto;
+  display: block;
+  margin: 0 auto;
+}
+.intel_8086_img{
+  height: 200px; width: auto;
+  display: block;
+  margin: 0 auto;
+}
+.intel_386_img{
+  height: 200px; width: auto;
+  display: block;
+  margin: 0 auto;
+}
+.intel_pollution{
+  height: 200px; width: auto;
+  display: block;
+  margin: 0 auto;
+}
+.intel_sustainability{
+  height: 200px; width: auto;
+  display: block;
+  margin: 0 auto;
+}
+.globe{
+  height: 200px; width: auto;
+  display: block;
+  margin: 0 auto;
 }
