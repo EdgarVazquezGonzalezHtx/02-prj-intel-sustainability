@@ -89,55 +89,101 @@ box-shadow: 0 4px 12px rgba(0, 113, 197, 0.4), inset 0 1px 0 rgba(255, 255, 255,
 padding: 44px 0 24px;
 }
 
-
-/* Simple single-column grid (easy version). Later you can do alternating cards. */
+/* Carousel container with flexbox layout */
 .timeline .container {
-display: grid;
-grid-template-columns: repeat(12, 1fr);
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 24px;
+position: relative;
+}
+
+/* Wrapper to clip cards outside the visible area */
+.carousel_wrapper {
+width: 100%;
+overflow: hidden;
+overflow: clip;
+border-radius: 12px;
+clip-path: inset(0);
+}
+
+/* Container that holds all cards and scrolls */
+.cards_container {
+display: flex;
 gap: 18px;
+transition: transform 0.5s ease;
+/* Initial state - no transform */
+transform: translateX(0);
+}
+
+/* Navigation buttons */
+.carousel_btn {
+/* Basic styling */
+background: linear-gradient(135deg, #0071C5 0%, #004BA3 100%);
+border: 2px solid #003D82;
+color: white;
+font-size: 20px;
+font-weight: bold;
+width: 48px;
+height: 48px;
+border-radius: 8px;
+cursor: pointer;
+flex-shrink: 0;
+display: flex;
+align-items: center;
+justify-content: center;
+transition: all 0.3s ease;
+box-shadow: 0 4px 12px rgba(0, 113, 197, 0.4);
+}
+
+.carousel_btn:hover:not(:disabled) {
+background: linear-gradient(135deg, #0084D8 0%, #0059C5 100%);
+box-shadow: 0 6px 16px rgba(0, 113, 197, 0.6);
+transform: scale(1.05);
+}
+
+.carousel_btn:disabled {
+opacity: 0.5;
+cursor: not-allowed;
+}
+
+.carousel_btn--left {
+order: 1;
+}
+
+.carousel_btn--right {
+order: 3;
+}
+
+/* Container for control buttons - centered below cards */
+.carousel_controls {
+display: flex;
+gap: 12px;
+justify-content: center;
 }
 
 
+/* Card sizing for 3 cards visible with gaps */
 .card {
-grid-column: 2 / -2;
+flex: 0 0 calc(33.333% - 12px);
+min-width: 280px;
 background: linear-gradient(135deg, #FFFFFF 0%, #E8F0FF 50%, #D0E8FF 100%);
 border: 2px solid #0071C5;
 border-radius: 28px;
 padding: 18px 18px 16px;
-box-shadow: 0 8px 24px rgba(0, 113, 197, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+box-shadow: 0 4px 12px rgba(0, 113, 197, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
-.intel_founded_img{
-  height: 200px; width: auto;
-  display: block;
-  margin: 0 auto;
-}
-.intel_4004_img{
-  height: 200px; width: auto;
-  display: block;
-  margin: 0 auto;
-}
-.intel_8086_img{
-  height: 200px; width: auto;
-  display: block;
-  margin: 0 auto;
-}
-.intel_386_img{
-  height: 200px; width: auto;
-  display: block;
-  margin: 0 auto;
-}
-.intel_pollution{
-  height: 200px; width: auto;
-  display: block;
-  margin: 0 auto;
-}
-.intel_sustainability{
-  height: 200px; width: auto;
-  display: block;
-  margin: 0 auto;
-}
-.globe{
-  height: 200px; width: auto;
+/* Image styling - fits images inside cards */
+.intel_founded_img,
+.intel_4004_img,
+.intel_8086_img,
+.intel_386_img,
+.intel_pollution,
+.intel_sustainability,
+.globe , .intel_renewable_energy, .intel_sustainability_summit {
+  height: 200px;
+  width: auto;
+  max-width: 100%;
   display: block;
   margin: 0 auto;
 }
@@ -156,4 +202,34 @@ box-shadow: 0 8px 24px rgba(0, 113, 197, 0.15), inset 0 1px 0 rgba(255, 255, 255
   max-height: 400px;
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Y2K Futurism styled instruction text */
+main > p {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  background: linear-gradient(135deg, #0071C5 0%, #243e45 50%, #062a46 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 20px rgba(0, 113, 197, 0.4);
+  filter: drop-shadow(0 0 10px rgba(0, 204, 255, 0.5)) drop-shadow(0 0 20px rgba(0, 113, 197, 0.3));
+  margin: 32px 0;
+  position: relative;
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    text-shadow: 0 0 5px rgba(0, 113, 197, 0.3);
+    filter: drop-shadow(0 0 10px rgba(0, 204, 255, 0.4)) drop-shadow(0 0 15px rgba(0, 113, 197, 0.2));
+  }
+  50% {
+    text-shadow: 0 0 15px rgba(0, 204, 255, 0.5);
+    filter: drop-shadow(0 0 15px rgba(0, 204, 255, 0.6)) drop-shadow(0 0 25px rgba(0, 113, 197, 0.4));
+  }
+
+  
 }
