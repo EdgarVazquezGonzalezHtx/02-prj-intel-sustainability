@@ -141,3 +141,19 @@ box-shadow: 0 8px 24px rgba(0, 113, 197, 0.15), inset 0 1px 0 rgba(255, 255, 255
   display: block;
   margin: 0 auto;
 }
+/* Hide card text by default and reveal on hover or focus-within */
+.card_text {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: max-height 0.36s ease, opacity 0.24s ease, transform 0.36s ease;
+  margin-top: 12px;
+}
+
+.card:hover .card_text,
+.card:focus-within .card_text {
+  max-height: 400px;
+  opacity: 1;
+  transform: translateY(0);
+}
