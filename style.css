@@ -282,14 +282,29 @@ main > p {
   .cards_container {
     flex-direction: column;   
     transform: none !important;
+    gap: 16px;
   }
-
+  
+  .carousel_wrapper {
+    overflow-y: auto;
+    max-height: 75vh;              
+    scroll-snap-type: y mandatory; 
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    padding: 8px 0;                /* small breathing room */
+  }
   .card {
     flex: 1 1 auto;
     min-width: 100%;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    scroll-snap-align: center;
   }
 
   .carousel_controls {
     display: none; /* arrows not needed on mobile */
+  }
+  .timeline_hint{
+    display: none;
   }
 }
