@@ -1,19 +1,112 @@
-/* Add your CSS here */
+
 :root {
 --card: #E8F0FF;
 --border: #0071C5;
 --radius: 28px;
 }
 
-
+/* Main body and background styling with drifting gradient effect */
 * { box-sizing: border-box; }
 body {
-margin: 0;
-font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-color: var(--ink);
-background: var(--bg);
-background: linear-gradient(135deg, #C0C0C0 0%, #808080 50%, #E8E8E8 100%);
+  background-size: 200% 200%;
+  animation:ps3-drift 18s ease-in-out infinite;
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  background: 
+  radial-gradient(
+        circle at 20% 30%,
+        rgba(0, 120, 255, 0.18),
+        transparent 40%
+      ),
+      radial-gradient(
+        circle at 80% 60%,
+        rgba(0, 200, 255, 0.12),
+        transparent 45%
+      ),
+      linear-gradient(
+        180deg,
+        #05070a 0%,
+        #0a0f18 35%,
+        #05070a 100%
+      );
+
+    background-attachment: fixed;
+  }
+
+  @keyframes ps3-drift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+    
 }
+
+.hero{
+  position: relative;
+  overflow: hidden;
+}
+
+/*PS3-style animation background*/
+
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  left: -25%;
+  width: 150%;
+  height: 160px;        
+  pointer-events: none;
+  opacity: 0.6;         
+  filter: blur(14px); 
+}
+
+/* Primary wave */
+.hero::before {
+  top: 28%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 220, 255, 0.85) 35%,  
+    rgba(0, 140, 255, 0.65) 55%,
+    transparent 100%
+  );
+  animation: ps3-wave-1 9s linear infinite;
+
+}
+
+/* Secondary wave */
+.hero::after {
+  top: 52%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 255, 255, 0.75) 40%,
+    rgba(0, 160, 255, 0.55) 60%,
+    transparent 100%
+  );
+  animation: ps3-wave-2 13s linear infinite;
+}
+
+
+@keyframes ps3-wave-1 {
+  0%   { transform: translateX(0) translateY(0); }
+  50%  { transform: translateX(-10%) translateY(-10px); }
+  100% { transform: translateX(0) translateY(0); }
+}
+
+@keyframes ps3-wave-2 {
+  0%   { transform: translateX(0) translateY(0); }
+  50%  { transform: translateX(8%) translateY(10px); }
+  100% { transform: translateX(0) translateY(0); }
+}
+
 
 
 .container {
@@ -22,18 +115,9 @@ margin: 0 auto;
 }
 
 
-.hero {
-padding: 8px 16px 6px;
-background:
-radial-gradient(900px 400px at 20% 0%, rgba(0, 174, 239, 0.20), transparent 60%),
-radial-gradient(700px 350px at 90% 20%, rgba(0, 104, 181, 0.18), transparent 60%),
-linear-gradient(180deg, #ffffff, #f2f7ff);
-border-bottom: 1px solid var(--border);
-height: max-content;
-}
-
-
 .container.hero_inner{
+  position:relative;
+  z-index: 2;
   background-color: #0068B5;
   height: max-content;
   box-sizing: border-box;
@@ -57,10 +141,11 @@ height: max-content;
 }
 
 .hero_title {
-  margin: 12px 0 6px;
+  margin: 6px 0 4px;
   font-size: clamp(24px, 2.8vw, 42px);
   letter-spacing: -0.02em;
-  line-height: 1.05;
+  line-height: 1.0;
+  font-size: clamp(22px, 2.4vw, 42px);
   font-weight: 800;
   background: linear-gradient(
     135deg,
@@ -223,7 +308,7 @@ box-shadow: 0 4px 12px rgba(0, 113, 197, 0.15), inset 0 1px 0 rgba(255, 255, 255
   transform: translateY(0);
 }
 
-/* Y2K Futurism styled instruction text */
+/* Y2K Futurism styled text */
 main > p {
   text-align: center;
   font-size: 18px;
@@ -254,30 +339,40 @@ main > p {
   .hero {
     padding: 12px 16px 8px;
   }
+  .hero_logo{
+    width: 130px;
+    max-height: 55px;
+    object-fit: contain;
+    margin-bottom: 6px;
+  }
 
   .container.hero_inner {
     border-radius: 20px;
   }
 
   .hero__title {
-    margin: 10px 0 8px;
+    margin: 6px 0 4px;
+    line-height: 1.0;
     font-size: clamp(20px, 2.5vw, 32px);
   }
 
   .hero__lead {
-    font-size: 14px;
+    font-size: 5px;
     line-height: 1.4;
-    max-width: 100%;
+    max-width: 60ch;
+    margin-bottom: 10px;
   }
 
   .hero__chips {
     gap: 6px;
-    margin-top: 10px;
+    margin-top: 8px;
+    justify-content: center;
   }
 
   .chip {
-    padding: 6px 10px;
-    font-size: 11px;
+    padding: 2px 8px;
+    font-size: 7px;
+    border-width: 1px;
   }
   .cards_container {
     flex-direction: column;   
@@ -291,7 +386,7 @@ main > p {
     scroll-snap-type: y mandatory; 
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
-    padding: 8px 0;                /* small breathing room */
+    padding: 8px 0;             
   }
   .card {
     flex: 1 1 auto;
@@ -307,4 +402,5 @@ main > p {
   .timeline_hint{
     display: none;
   }
+
 }
